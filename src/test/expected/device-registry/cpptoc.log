@@ -1,0 +1,4 @@
+CppToC: 2 headers bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/device-registry/c/include
+  bridged   device_registry.hpp        -> RegistryApi: 1 function (1 with C++ linkage)
+  bridged   device_registry_types.hpp  -> DeviceRegistryTypes: 4 structs, 1 enum, 9 constant/macros
+  safe wrapper: 1 function, 4 layout probes, includes [device_registry.hpp]; 0 with C linkage also declared in the C views (5 file(s) changed)

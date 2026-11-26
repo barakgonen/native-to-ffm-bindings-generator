@@ -1,0 +1,58 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "a.h",
+      "javaClass": "AApi",
+      "types": [],
+      "functions": ["safe_f"],
+      "constants": {}
+    },
+    {
+      "file": "b.h",
+      "javaClass": "BApi",
+      "types": [],
+      "functions": ["safe_g"],
+      "constants": {}
+    },
+    {
+      "file": "shared.h",
+      "javaClass": "Shared",
+      "types": ["Shared"],
+      "functions": [],
+      "constants": {}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Shared",
+      "fields": [
+        {"name": "a", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a"}
+      ]
+    }
+  ],
+  "enums": [],
+  "probes": ["Shared"],
+  "functions": [
+    {
+      "safe": "safe_f",
+      "provider": "f",
+      "decl": "void f(Shared& s)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "s", "type": "Shared", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_g",
+      "provider": "g",
+      "decl": "void g(const Shared& s)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "s", "type": "Shared", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    }
+  ]
+}

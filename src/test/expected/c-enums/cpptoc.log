@@ -1,0 +1,3 @@
+CppToC: 1 header bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/c-enums/c/include
+  bridged   e.h  -> EApi: 1 struct, 3 enums, 1 typedef, 1 function (1 with C++ linkage)
+  safe wrapper: 1 function, 1 layout probe, includes [e.h]; 0 with C linkage also declared in the C views (4 file(s) changed)

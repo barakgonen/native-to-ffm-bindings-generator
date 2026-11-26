@@ -1,0 +1,1 @@
+struct Shared { int a; };

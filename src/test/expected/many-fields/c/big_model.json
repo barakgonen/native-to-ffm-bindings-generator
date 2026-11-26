@@ -1,0 +1,128 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "api.h",
+      "javaClass": "Api",
+      "types": [],
+      "functions": ["safe_big_sum", "safe_big_fill", "safe_big_make", "safe_big_bump"],
+      "constants": {}
+    },
+    {
+      "file": "types.h",
+      "javaClass": "Types",
+      "types": ["Point", "Big", "Color"],
+      "functions": [],
+      "constants": {}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Point",
+      "fields": [
+        {"name": "x", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double x"},
+        {"name": "y", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double y"}
+      ]
+    },
+    {
+      "name": "Big",
+      "fields": [
+        {"name": "i0", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int i0"},
+        {"name": "d1", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double d1"},
+        {"name": "l2", "type": "int64_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int64_t l2"},
+        {"name": "f3", "type": "float", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "float f3"},
+        {"name": "p4", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point p4"},
+        {"name": "a5", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a5[3]"},
+        {"name": "s6", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char s6[8]"},
+        {"name": "c7", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c7"},
+        {"name": "i8", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int i8"},
+        {"name": "d9", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double d9"},
+        {"name": "l10", "type": "int64_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int64_t l10"},
+        {"name": "f11", "type": "float", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "float f11"},
+        {"name": "p12", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point p12"},
+        {"name": "a13", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a13[3]"},
+        {"name": "s14", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char s14[8]"},
+        {"name": "c15", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c15"},
+        {"name": "i16", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int i16"},
+        {"name": "d17", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double d17"},
+        {"name": "l18", "type": "int64_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int64_t l18"},
+        {"name": "f19", "type": "float", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "float f19"},
+        {"name": "p20", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point p20"},
+        {"name": "a21", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a21[3]"},
+        {"name": "s22", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char s22[8]"},
+        {"name": "c23", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c23"},
+        {"name": "i24", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int i24"},
+        {"name": "d25", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double d25"},
+        {"name": "l26", "type": "int64_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int64_t l26"},
+        {"name": "f27", "type": "float", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "float f27"},
+        {"name": "p28", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point p28"},
+        {"name": "a29", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a29[3]"},
+        {"name": "s30", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char s30[8]"},
+        {"name": "c31", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c31"},
+        {"name": "i32", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int i32"},
+        {"name": "d33", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double d33"},
+        {"name": "l34", "type": "int64_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int64_t l34"},
+        {"name": "f35", "type": "float", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "float f35"},
+        {"name": "p36", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point p36"},
+        {"name": "a37", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int a37[3]"},
+        {"name": "s38", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char s38[8]"},
+        {"name": "c39", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c39"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "Color",
+      "names": ["Color"],
+      "constants": [
+        {"name": "RED", "value": 0},
+        {"name": "GREEN", "value": 1},
+        {"name": "BLUE", "value": 2}
+      ]
+    }
+  ],
+  "probes": ["Point", "Big"],
+  "functions": [
+    {
+      "safe": "safe_big_sum",
+      "provider": "big_sum",
+      "decl": "double big_sum(const Big *b)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "b", "type": "Big", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_big_fill",
+      "provider": "big_fill",
+      "decl": "void big_fill(Big *out, int seed)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "out", "type": "Big", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "seed", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_big_make",
+      "provider": "big_make",
+      "decl": "Big big_make(int seed)",
+      "if": null,
+      "result": {"type": "Big", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "seed", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_big_bump",
+      "provider": "big_bump",
+      "decl": "int big_bump(Big *b)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "b", "type": "Big", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    }
+  ]
+}

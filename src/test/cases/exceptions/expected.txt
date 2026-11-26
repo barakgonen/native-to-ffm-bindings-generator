@@ -1,0 +1,25 @@
+with --exceptions 'vendor::Timeout=message(),vendor::Error=message(),vendor::Fault=code' --exception-headers errors.hpp:
+ 0  SAFE_OK                 result=7
+ 1  SAFE_CPP_EXCEPTION      type=vendor::Error      message=disk full
+ 2  SAFE_CPP_EXCEPTION      type=vendor::Timeout    message=no answer in 5 s
+ 3  SAFE_CPP_EXCEPTION      type=vendor::Fault      message=13
+ 4  SAFE_CPP_EXCEPTION      type=vendor::Locked     message=store is locked
+ 5  SAFE_CPP_EXCEPTION      type=std::out_of_range  message=kind 5 is out of range
+ 6  SAFE_UNKNOWN_EXCEPTION  type=const char*        message=a C string
+ 7  SAFE_UNKNOWN_EXCEPTION  type=std::string        message=a std::string
+ 8  SAFE_UNKNOWN_EXCEPTION  type=int                message=42
+ 9  SAFE_UNKNOWN_EXCEPTION  type=double             message=2.5
+10  SAFE_UNKNOWN_EXCEPTION  type=vendor::Opaque     message=
+
+without --exceptions:
+ 0  SAFE_OK                 result=7
+ 1  SAFE_UNKNOWN_EXCEPTION  type=vendor::Error      message=
+ 2  SAFE_UNKNOWN_EXCEPTION  type=vendor::Timeout    message=
+ 3  SAFE_UNKNOWN_EXCEPTION  type=vendor::Fault      message=
+ 4  SAFE_CPP_EXCEPTION      type=vendor::Locked     message=store is locked
+ 5  SAFE_CPP_EXCEPTION      type=std::out_of_range  message=kind 5 is out of range
+ 6  SAFE_UNKNOWN_EXCEPTION  type=const char*        message=a C string
+ 7  SAFE_UNKNOWN_EXCEPTION  type=std::string        message=a std::string
+ 8  SAFE_UNKNOWN_EXCEPTION  type=int                message=42
+ 9  SAFE_UNKNOWN_EXCEPTION  type=double             message=2.5
+10  SAFE_UNKNOWN_EXCEPTION  type=vendor::Opaque     message=

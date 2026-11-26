@@ -1,0 +1,1 @@
+RecordGen: wrote 3 classes, 1 enums, SensorApi (8 functions), SafeWrapper, NativeLibraries (sensor, sensor_safe; SENSOR_LIBRARY_DIR) to <out>/matlab/java/gen/{api,types,runtime,internal}

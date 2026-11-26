@@ -1,0 +1,4 @@
+warning: cannot read the layout of Item: java.lang.ExceptionInInitializerError
+warning: Node.next: pointer to Node closes a cycle, kept as MemorySegment (use Node.fromPointer)
+warning: nasty.h: type Item not found in the jextract output
+RecordGen: wrote 3 classes, 4 enums, NastyApi (29 functions, 5 constants), SafeWrapper, NativeLibraries (nasty, nasty_safe; NASTY_LIBRARY_DIR) to <out>/cpp-features/java/gen/{api,types,runtime,internal}

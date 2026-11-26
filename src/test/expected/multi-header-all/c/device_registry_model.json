@@ -1,0 +1,201 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "analytics.h",
+      "javaClass": "AnalyticsApi",
+      "types": [],
+      "functions": ["safe_countHealthy"],
+      "constants": {}
+    },
+    {
+      "file": "device_registry.h",
+      "javaClass": "DeviceRegistryApi",
+      "types": [],
+      "functions": ["safe_updateRegistry"],
+      "constants": {}
+    },
+    {
+      "file": "device_registry_types.h",
+      "javaClass": "DeviceRegistryTypes",
+      "types": ["Point", "Camera", "Lidar", "Radar", "Health"],
+      "functions": [],
+      "constants": {"REGISTRY_CAPACITY": 1000, "NAME_LEN": 16, "MAX_BEAMS": 5, "REQ_RESET": 0, "REQ_ADD": 1, "REQ_LAST": 2, "REGISTRY_FULL": -1, "REGISTRY_INVALID": -2}
+    },
+    {
+      "file": "inventory.h",
+      "javaClass": "InventoryApi",
+      "types": [],
+      "functions": ["safe_packCrate", "safe_crateState"],
+      "constants": {}
+    },
+    {
+      "file": "inventory_types.h",
+      "javaClass": "InventoryTypes",
+      "types": ["Crate", "CrateState"],
+      "functions": [],
+      "constants": {"MAX_CRATES": 64}
+    },
+    {
+      "file": "pricing/pricing.h",
+      "javaClass": "PricingApi",
+      "types": ["Price"],
+      "functions": ["safe_priceOf"],
+      "constants": {}
+    },
+    {
+      "file": "units.h",
+      "javaClass": "Units",
+      "types": [],
+      "functions": [],
+      "constants": {"GRAMS_PER_KG": 1000, "CURRENCY_LEN": 4}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Point",
+      "fields": [
+        {"name": "x", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double x"},
+        {"name": "y", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double y"}
+      ]
+    },
+    {
+      "name": "Camera",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "lenses", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int lenses"},
+        {"name": "model", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char model[NAME_LEN]"}
+      ]
+    },
+    {
+      "name": "Lidar",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "health", "type": "Health", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Health health"},
+        {"name": "position", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point position"},
+        {"name": "origin", "type": "Point", "ptr": 1, "const": false, "char": false, "fn": false, "decl": "Point *origin"},
+        {"name": "beams", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int beams[MAX_BEAMS]"},
+        {"name": "name", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char name[NAME_LEN]"}
+      ]
+    },
+    {
+      "name": "Radar",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "health", "type": "Health", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Health health"},
+        {"name": "site", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char site[NAME_LEN]"}
+      ]
+    },
+    {
+      "name": "Crate",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "sample", "type": "Camera", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Camera sample"},
+        {"name": "count", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int count"},
+        {"name": "totalWeight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double totalWeight"},
+        {"name": "state", "type": "CrateState", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "CrateState state"}
+      ]
+    },
+    {
+      "name": "Price",
+      "fields": [
+        {"name": "perKg", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double perKg"},
+        {"name": "currency", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char currency[CURRENCY_LEN]"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "Health",
+      "names": ["Health"],
+      "constants": [
+        {"name": "GREEN", "value": 0},
+        {"name": "YELLOW", "value": 1},
+        {"name": "RED", "value": 2}
+      ]
+    },
+    {
+      "name": "CrateState",
+      "names": ["CrateState"],
+      "constants": [
+        {"name": "EMPTY", "value": 0},
+        {"name": "PARTIAL", "value": 1},
+        {"name": "FULL", "value": 2}
+      ]
+    }
+  ],
+  "probes": ["Point", "Camera", "Lidar", "Radar", "Crate", "Price"],
+  "functions": [
+    {
+      "safe": "safe_countHealthy",
+      "provider": "countHealthy",
+      "decl": "int countHealthy(const Radar* radars, int count, Health health)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "radars", "type": "Radar", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "count", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "health", "type": "Health", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_updateRegistry",
+      "provider": "updateRegistry",
+      "decl": "void updateRegistry(int reqType, Camera& camera, Lidar& lidar, Radar& radar, double timeTag, double pendingEvents, void* ptr, void** outPtr, Camera* cameras, Lidar* lidars, Radar* radars, int* sizeOfInternalBuffer, double* cameraCount, double* lidarsCount)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "reqType", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "camera", "type": "Camera", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "lidar", "type": "Lidar", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "radar", "type": "Radar", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "timeTag", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "pendingEvents", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "ptr", "type": "void", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "outPtr", "type": "void", "ptr": 2, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "cameras", "type": "Camera", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "lidars", "type": "Lidar", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "radars", "type": "Radar", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "sizeOfInternalBuffer", "type": "int", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "cameraCount", "type": "double", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "lidarsCount", "type": "double", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_packCrate",
+      "provider": "packCrate",
+      "decl": "int packCrate(Crate& crate, const Camera* cameras, int count)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "crate", "type": "Crate", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "cameras", "type": "Camera", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "count", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_crateState",
+      "provider": "crateState",
+      "decl": "CrateState crateState(const Crate& crate)",
+      "if": null,
+      "result": {"type": "CrateState", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "crate", "type": "Crate", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_priceOf",
+      "provider": "pricing::priceOf",
+      "decl": "double pricing::priceOf(const Lidar& lidar, Price price)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "lidar", "type": "Lidar", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "price", "type": "Price", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": true, "array": null}
+      ]
+    }
+  ]
+}

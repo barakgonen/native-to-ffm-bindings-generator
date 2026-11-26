@@ -1,0 +1,6 @@
+warning: shared.hpp:1: shared.hpp has no include guard (#pragma once or #ifndef) and is included by [a.hpp, b.hpp]: the C++ compiler sees its definitions twice in one translation unit
+CppToC: 3 headers bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/include-guards/c/include
+  bridged   a.hpp       -> AApi: 1 function (1 with C++ linkage)
+  bridged   b.hpp       -> BApi: 1 function (1 with C++ linkage)
+  bridged   shared.hpp  -> Shared: 1 struct
+  safe wrapper: 2 functions, 1 layout probe, includes [a.hpp, b.hpp]; 0 with C linkage also declared in the C views (6 file(s) changed)

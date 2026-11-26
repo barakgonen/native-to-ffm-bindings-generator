@@ -1,0 +1,4 @@
+CppToC: 1 header bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/exceptions/c/include
+  bridged   store.hpp  -> StoreApi: 1 function (1 with C++ linkage)
+  (1 other header in [include] not used)
+  safe wrapper: 1 function, 0 layout probes, includes [store.hpp]; 0 with C linkage also declared in the C views (4 file(s) changed)

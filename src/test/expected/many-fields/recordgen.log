@@ -1,0 +1,1 @@
+RecordGen: wrote 2 classes, 1 enums, Api (4 functions), SafeWrapper, NativeLibraries (big, big_safe; BIG_LIBRARY_DIR) to <out>/many-fields/java/gen/{api,types,runtime,internal}

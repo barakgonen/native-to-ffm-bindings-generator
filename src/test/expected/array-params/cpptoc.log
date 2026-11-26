@@ -1,0 +1,3 @@
+CppToC: 1 header bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/array-params/c/include
+  bridged   a.h  -> AApi: 1 struct, 2 constant/macros, 2 functions (2 with C++ linkage)
+  safe wrapper: 2 functions, 1 layout probe, includes [a.h]; 0 with C linkage also declared in the C views (4 file(s) changed)

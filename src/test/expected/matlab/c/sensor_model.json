@@ -1,0 +1,183 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "sensor.h",
+      "javaClass": "SensorApi",
+      "types": [],
+      "functions": ["safe_sensor", "safe_sensor_total", "safe_sensor_scale", "safe_sensor_spectrum", "safe_sensor_valid", "safe_sensor_summary"],
+      "constants": {}
+    },
+    {
+      "file": "sensor_initialize.h",
+      "javaClass": "SensorApi",
+      "types": [],
+      "functions": ["safe_sensor_initialize"],
+      "constants": {}
+    },
+    {
+      "file": "sensor_terminate.h",
+      "javaClass": "SensorApi",
+      "types": [],
+      "functions": ["safe_sensor_terminate"],
+      "constants": {}
+    },
+    {
+      "file": "sensor_types.h",
+      "javaClass": "SensorTypes",
+      "types": ["struct0_T", "struct1_T", "SensorKind"],
+      "functions": [],
+      "constants": {}
+    }
+  ],
+  "structs": [
+    {
+      "name": "struct0_T",
+      "fields": [
+        {"name": "id", "type": "int32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int32_T id"},
+        {"name": "kind", "type": "SensorKind", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "SensorKind kind"},
+        {"name": "weight", "type": "real_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real_T weight"},
+        {"name": "position", "type": "real_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real_T position[2]"},
+        {"name": "calibrated", "type": "boolean_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "boolean_T calibrated"},
+        {"name": "name", "type": "char_T", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char_T name[16]"}
+      ]
+    },
+    {
+      "name": "struct1_T",
+      "fields": [
+        {"name": "count", "type": "int32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int32_T count"},
+        {"name": "best", "type": "struct0_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "struct0_T best"},
+        {"name": "total", "type": "real_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real_T total"}
+      ]
+    },
+    {
+      "name": "creal32_T",
+      "fields": [
+        {"name": "re", "type": "real32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real32_T re"},
+        {"name": "im", "type": "real32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real32_T im"}
+      ]
+    },
+    {
+      "name": "creal64_T",
+      "fields": [
+        {"name": "re", "type": "real64_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real64_T re"},
+        {"name": "im", "type": "real64_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real64_T im"}
+      ]
+    },
+    {
+      "name": "creal_T",
+      "fields": [
+        {"name": "re", "type": "real_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real_T re"},
+        {"name": "im", "type": "real_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "real_T im"}
+      ]
+    },
+    {
+      "name": "cint8_T",
+      "fields": [
+        {"name": "re", "type": "int8_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int8_T re"},
+        {"name": "im", "type": "int8_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int8_T im"}
+      ]
+    },
+    {
+      "name": "cint32_T",
+      "fields": [
+        {"name": "re", "type": "int32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int32_T re"},
+        {"name": "im", "type": "int32_T", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int32_T im"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "SensorKind",
+      "names": ["SensorKind"],
+      "constants": [
+        {"name": "Temperature", "value": 0},
+        {"name": "Pressure", "value": 1},
+        {"name": "Humidity", "value": 2}
+      ]
+    }
+  ],
+  "probes": ["struct0_T", "struct1_T", "creal32_T", "creal64_T", "creal_T", "cint8_T", "cint32_T"],
+  "functions": [
+    {
+      "safe": "safe_sensor",
+      "provider": "sensorlib::sensor",
+      "decl": "void sensorlib::sensor(const struct0_T *in, double out[3])",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "in", "type": "struct0_T", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "out", "type": "double", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": 3}
+      ]
+    },
+    {
+      "safe": "safe_sensor_total",
+      "provider": "sensorlib::sensor_total",
+      "decl": "double sensorlib::sensor_total(const double weights[1000])",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "weights", "type": "double", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": 1000}
+      ]
+    },
+    {
+      "safe": "safe_sensor_scale",
+      "provider": "sensorlib::sensor_scale",
+      "decl": "void sensorlib::sensor_scale(double v[3], double factor)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "v", "type": "double", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": 3},
+        {"name": "factor", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_sensor_spectrum",
+      "provider": "sensorlib::sensor_spectrum",
+      "decl": "creal_T sensorlib::sensor_spectrum(double re, double im)",
+      "if": null,
+      "result": {"type": "creal_T", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "re", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "im", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_sensor_valid",
+      "provider": "sensorlib::sensor_valid",
+      "decl": "boolean_T sensorlib::sensor_valid(const struct0_T *in)",
+      "if": null,
+      "result": {"type": "boolean_T", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "in", "type": "struct0_T", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_sensor_summary",
+      "provider": "sensorlib::sensor_summary",
+      "decl": "void sensorlib::sensor_summary(const struct0_T sensors[4], struct1_T *summary)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "sensors", "type": "struct0_T", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": 4},
+        {"name": "summary", "type": "struct1_T", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_sensor_initialize",
+      "provider": "sensorlib::sensor_initialize",
+      "decl": "void sensorlib::sensor_initialize()",
+      "if": null,
+      "result": null,
+      "params": []
+    },
+    {
+      "safe": "safe_sensor_terminate",
+      "provider": "sensorlib::sensor_terminate",
+      "decl": "void sensorlib::sensor_terminate()",
+      "if": null,
+      "result": null,
+      "params": []
+    }
+  ]
+}
