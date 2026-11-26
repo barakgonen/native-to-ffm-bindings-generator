@@ -1,0 +1,11 @@
+warning: analytics.hpp:1: analytics.hpp uses [Health, Radar] from [device_registry_types.hpp] without including it: the safe wrapper files include that header first
+CppToC: 7 headers bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/multi-header-all/c/include
+  bridged   analytics.hpp              -> AnalyticsApi: 1 function (1 with C++ linkage)
+  bridged   device_registry.hpp        -> DeviceRegistryApi: 1 function (1 with C++ linkage)
+  bridged   device_registry_types.hpp  -> DeviceRegistryTypes: 4 structs, 1 enum, 9 constant/macros
+  bridged   inventory.hpp              -> InventoryApi: 2 functions (2 with C++ linkage)
+  bridged   inventory_types.hpp        -> InventoryTypes: 1 struct, 1 enum, 1 constant/macro
+  bridged   pricing/pricing.hpp        -> PricingApi: 1 struct, 1 function (1 with C++ linkage)
+  bridged   units.hpp                  -> Units: 2 constant/macros
+  excluded  device_registry_impl.hpp
+  safe wrapper: 5 functions, 6 layout probes, includes [device_registry.hpp, inventory.hpp, pricing/pricing.hpp, analytics.hpp]; 0 with C linkage also declared in the C views (10 file(s) changed)

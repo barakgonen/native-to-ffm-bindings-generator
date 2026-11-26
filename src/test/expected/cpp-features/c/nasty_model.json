@@ -1,0 +1,384 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "nasty.h",
+      "javaClass": "NastyApi",
+      "types": ["Vec2", "Item", "Inner", "Node", "Color", "Mode", "Status", "Kind"],
+      "functions": ["safe_sum", "safe_add", "safe_origin", "safe_describe", "safe_createEngine", "safe_destroyEngine", "safe_runEngine", "safe_mix", "safe_shrink", "safe_isActive", "safe_area", "safe_area_2", "safe_oldArea", "safe_countItems", "safe_twice", "safe_forEach", "safe_withCallback", "safe_clampInt", "safe_fill", "safe_counters", "safe_toggle", "safe_length", "safe_check", "safe_secret", "safe_nasty_c_init", "safe_nasty_c_version", "safe_nasty_c_count", "safe_nasty_c_scale", "safe_nasty_legacy_only", "safe_nasty_current_only"],
+      "constants": {"MAX_ITEMS": 8, "FLAGS": 19, "BIG": 1000000, "MASK": 240, "Vec2_DIM": 2}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Vec2",
+      "fields": [
+        {"name": "x", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double x"},
+        {"name": "y", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double y"}
+      ]
+    },
+    {
+      "name": "Item",
+      "fields": [
+        {"name": "id", "type": "int32_t", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int32_t id"},
+        {"name": "tag", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char tag[MAX_ITEMS]"},
+        {"name": "color", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color color"},
+        {"name": "size", "type": "Small", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Small size"},
+        {"name": "active", "type": "bool", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "bool active"},
+        {"name": "where", "type": "Vec2", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Vec2 where[Vec2::DIM]"},
+        {"name": "callback", "type": "void", "ptr": 1, "const": false, "char": false, "fn": true, "decl": "void (*callback)(int, const Vec2 *)"},
+        {"name": "aligned", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double aligned"}
+      ]
+    },
+    {
+      "name": "Inner",
+      "fields": [
+        {"name": "value", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int value"}
+      ]
+    },
+    {
+      "name": "Node",
+      "fields": [
+        {"name": "inner", "type": "Inner", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Inner inner"},
+        {"name": "kind", "type": "Kind", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Kind kind"},
+        {"name": "next", "type": "Node", "ptr": 1, "const": false, "char": false, "fn": false, "decl": "Node *next"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "Color",
+      "names": ["Color"],
+      "constants": [
+        {"name": "Red", "value": 0},
+        {"name": "Green", "value": 5},
+        {"name": "Blue", "value": 6}
+      ]
+    },
+    {
+      "name": "Mode",
+      "names": ["Mode"],
+      "constants": [
+        {"name": "MODE_OFF", "value": 0},
+        {"name": "MODE_ON", "value": 9}
+      ]
+    },
+    {
+      "name": "Status",
+      "names": ["Status"],
+      "constants": [
+        {"name": "OK", "value": 0},
+        {"name": "FAILED", "value": 1}
+      ]
+    },
+    {
+      "name": "Kind",
+      "names": ["Kind"],
+      "constants": [
+        {"name": "LEAF", "value": 0},
+        {"name": "BRANCH", "value": 1}
+      ]
+    }
+  ],
+  "probes": ["Vec2", "Item", "Inner", "Node"],
+  "functions": [
+    {
+      "safe": "safe_sum",
+      "provider": "nasty::sum",
+      "decl": "int nasty::sum(const int* values, std::size_t count)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "values", "type": "int", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": -1},
+        {"name": "count", "type": "size_t", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_add",
+      "provider": "nasty::add",
+      "decl": "Vec2 nasty::add(Vec2 a, const Vec2& b)",
+      "if": null,
+      "result": {"type": "Vec2", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "a", "type": "Vec2", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": true, "array": null},
+        {"name": "b", "type": "Vec2", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_origin",
+      "provider": "nasty::origin",
+      "decl": "Vec2& nasty::origin()",
+      "if": null,
+      "result": {"type": "Vec2", "ptr": 1, "const": false, "char": false, "fn": false},
+      "params": []
+    },
+    {
+      "safe": "safe_describe",
+      "provider": "nasty::describe",
+      "decl": "const char* nasty::describe(const Item& item)",
+      "if": null,
+      "result": {"type": "char", "ptr": 1, "const": true, "char": true, "fn": false},
+      "params": [
+        {"name": "item", "type": "Item", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_createEngine",
+      "provider": "nasty::createEngine",
+      "decl": "Engine* nasty::createEngine(int kind)",
+      "if": null,
+      "result": {"type": "Engine", "ptr": 1, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "kind", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_destroyEngine",
+      "provider": "nasty::destroyEngine",
+      "decl": "void nasty::destroyEngine(Engine* engine)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "engine", "type": "Engine", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_runEngine",
+      "provider": "nasty::runEngine",
+      "decl": "void nasty::runEngine(Engine& engine)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "engine", "type": "Engine", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_mix",
+      "provider": "nasty::mix",
+      "decl": "Color nasty::mix(Color a, const Color& b)",
+      "if": null,
+      "result": {"type": "Color", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "a", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "b", "type": "Color", "ptr": 0, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_shrink",
+      "provider": "nasty::shrink",
+      "decl": "Small nasty::shrink(Small s)",
+      "if": null,
+      "result": {"type": "Small", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "s", "type": "Small", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_isActive",
+      "provider": "nasty::isActive",
+      "decl": "bool nasty::isActive(const Item* item)",
+      "if": null,
+      "result": {"type": "bool", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "item", "type": "Item", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_area",
+      "provider": "nasty::area",
+      "decl": "double nasty::area(const Vec2& v)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "v", "type": "Vec2", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_area_2",
+      "provider": "nasty::area",
+      "decl": "double nasty::area(const Item& item)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "item", "type": "Item", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_oldArea",
+      "provider": "nasty::oldArea",
+      "decl": "double nasty::oldArea(const Vec2& v)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "v", "type": "Vec2", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_countItems",
+      "provider": "nasty::countItems",
+      "decl": "int nasty::countItems(const Item* items, int n)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "items", "type": "Item", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": -1},
+        {"name": "n", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_twice",
+      "provider": "nasty::twice",
+      "decl": "int nasty::twice(int x)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "x", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_forEach",
+      "provider": "nasty::forEach",
+      "decl": "void nasty::forEach(const Item* items, int n, Callback cb, void* user)",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "items", "type": "Item", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": -1},
+        {"name": "n", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "cb", "type": "Callback", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "user", "type": "void", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_withCallback",
+      "provider": "nasty::withCallback",
+      "decl": "void nasty::withCallback(void (*cb)(int, const Vec2&))",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "cb", "type": "void", "ptr": 0, "const": false, "char": false, "fn": true, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_clampInt",
+      "provider": "nasty::clampInt",
+      "decl": "int nasty::clampInt(int v, const int& lo, const int& hi)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "v", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "lo", "type": "int", "ptr": 0, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "hi", "type": "int", "ptr": 0, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_fill",
+      "provider": "nasty::fill",
+      "decl": "void nasty::fill(Item items[MAX_ITEMS])",
+      "if": null,
+      "result": null,
+      "params": [
+        {"name": "items", "type": "Item", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": 8}
+      ]
+    },
+    {
+      "safe": "safe_counters",
+      "provider": "nasty::counters",
+      "decl": "int* nasty::counters()",
+      "if": null,
+      "result": {"type": "int", "ptr": 1, "const": false, "char": false, "fn": false},
+      "params": []
+    },
+    {
+      "safe": "safe_toggle",
+      "provider": "nasty::toggle",
+      "decl": "Mode nasty::toggle(Mode m)",
+      "if": null,
+      "result": {"type": "Mode", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "m", "type": "Mode", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_length",
+      "provider": "nasty::length",
+      "decl": "double nasty::length(Vector v)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "v", "type": "Vector", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": true, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_check",
+      "provider": "nasty::check",
+      "decl": "Status nasty::check(int arg1)",
+      "if": null,
+      "result": {"type": "Status", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "arg1", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_secret",
+      "provider": "nasty::detail::secret",
+      "decl": "int nasty::detail::secret(int x)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "x", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_nasty_c_init",
+      "provider": "nasty_c_init",
+      "decl": "int nasty_c_init(nasty::Item* item)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "item", "type": "Item", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_nasty_c_version",
+      "provider": "nasty_c_version",
+      "decl": "int nasty_c_version()",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": []
+    },
+    {
+      "safe": "safe_nasty_c_count",
+      "provider": "nasty_c_count",
+      "decl": "int nasty_c_count()",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": []
+    },
+    {
+      "safe": "safe_nasty_c_scale",
+      "provider": "nasty_c_scale",
+      "decl": "double nasty_c_scale(const nasty::Vec2& v, double factor)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "v", "type": "Vec2", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "factor", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_nasty_legacy_only",
+      "provider": "nasty_legacy_only",
+      "decl": "int nasty_legacy_only()",
+      "if": "(defined(NASTY_LEGACY_API))",
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": []
+    },
+    {
+      "safe": "safe_nasty_current_only",
+      "provider": "nasty_current_only",
+      "decl": "int nasty_current_only()",
+      "if": "!(defined(NASTY_LEGACY_API))",
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": []
+    }
+  ]
+}

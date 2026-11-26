@@ -1,0 +1,1 @@
+RecordGen: wrote 4 classes, 1 enums, RegistryApi (1 function), DeviceRegistryTypes (0 functions, 8 constants), SafeWrapper, NativeLibraries (device_registry, device_registry_safe; DEVICE_REGISTRY_LIBRARY_DIR, 2 additional files) to <out>/device-registry/java/gen/{api,types,runtime,internal}; module-info.java: module gen.devices exports gen.api, .types and .runtime

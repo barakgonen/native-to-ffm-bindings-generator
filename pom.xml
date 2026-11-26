@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.nativeffm</groupId>
+    <artifactId>native-to-ffm-bindings-generator</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>native-to-ffm-bindings-generator</name>
+    <description>
+        A Maven plugin that generates a Java (FFM) API for a provider's C++ library from its headers: a safe wrapper
+        in C++ that no exception escapes, jextract bindings of it, and Java value classes and API classes on top.
+    </description>
+
+    <!--
+        src/main/java       io/nativeffm/maven/GenerateMojo.java: the goal, native-to-ffm:generate
+                            io/nativeffm/cpptoc/, io/nativeffm/recordgen/: the two generators
+        src/main/resources  what the generators copy into their output (safe_runtime.cpp, the Java runtime classes)
+        src/test            golden.sh, exceptions.sh: the generators' tests (they need jextract and a C++ compiler)
+        install-offline.sh: installs the jar into a Maven repository without Maven (air-gapped networks)
+        README.md: how to use it. DESIGN.md: how it works.
+    -->
+
+    <prerequisites>
+        <maven>3.9.0</maven>
+    </prerequisites>
+
+    <properties>
+        <!-- the plugin runs in Maven's JVM, and writes code for this Java version -->
+        <maven.compiler.release>25</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.version>3.9.11</maven.version>
+        <!-- 3.15.2 and later read Java 25 class files -->
+        <maven-plugin-tools.version>3.15.2</maven-plugin-tools.version>
+    </properties>
+
+    <dependencies>
+        <!-- Maven's own API: provided by the Maven that runs the plugin. The generators use only the JDK. No other
+             dependency, in any scope but provided: the jar is all the plugin needs (the enforcer rule below checks it) -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>${maven.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin-tools.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.5.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.4.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin-tools.version}</version>
+                <configuration>
+                    <goalPrefix>native-to-ffm</goalPrefix>
+                    <!-- the plugin runs in Maven's JVM: Maven must run on JDK 25 (Maven 4 checks this value; with
+                         Maven 3, a JDK that is too old fails to load the plugin's classes) -->
+                    <requiredJavaVersion>${maven.compiler.release}</requiredJavaVersion>
+                </configuration>
+                <executions>
+                    <!-- the descriptor is read from the compiled annotations: after compile -->
+                    <execution>
+                        <id>default-descriptor</id>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>enforce-build-environment</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[${maven.compiler.release},)</version>
+                                    <message>Build with JDK ${maven.compiler.release} or later.</message>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <version>[3.9.0,)</version>
+                                </requireMavenVersion>
+                                <!-- the plugin is shipped as one jar (air-gapped environments, see README.md): Maven's
+                                     API is provided by the Maven that runs it, and nothing else may be needed -->
+                                <bannedDependencies>
+                                    <excludes>
+                                        <exclude>*:*:*:*:compile</exclude>
+                                        <exclude>*:*:*:*:runtime</exclude>
+                                        <exclude>*:*:*:*:system</exclude>
+                                    </excludes>
+                                    <message>The plugin must have no run-time dependencies: it is shipped as one jar. Use the provided scope for Maven's API, and put anything else into the plugin's own code.</message>
+                                </bannedDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

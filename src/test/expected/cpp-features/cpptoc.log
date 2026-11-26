@@ -1,0 +1,17 @@
+warning: nasty.hpp:93: template skipped: template <typename T> T clampValue(T v, T lo, T hi) {...}
+warning: nasty.hpp:121: operator overload skipped: bool operator==(const Vec2& a, const Vec2& b);
+warning: nasty.hpp:89: typedef [Name] not translated: uses std::string
+warning: nasty.hpp:90: typedef [Ids] not translated: template type
+warning: nasty.hpp:32: enum Small has underlying type uint8_t: in C (and Java) it is a uint8_t with constants
+warning: nasty.hpp:36: struct Vec2 has default member initializers; in C (and in Java's no-arg constructor) the fields start at zero
+warning: nasty.hpp:72: class Engine is opaque in C (has virtual functions): usable through pointers only
+warning: nasty.hpp:78: class Counter is opaque in C (has private data members): usable through pointers only
+warning: nasty.hpp:84: struct Point3 is opaque in C (has a base class): usable through pointers only
+warning: nasty.hpp:86: struct WithString is opaque in C (a member uses std::string): usable through pointers only
+warning: nasty.hpp:105: nasty::setName not translated: parameter name uses std::string
+warning: nasty.hpp:106: nasty::take not translated: parameter item rvalue reference
+warning: nasty.hpp:108: nasty::area: wrapper name safe_area is taken, using safe_area_2
+warning: nasty.hpp:131: nasty_c_log is variadic: no wrapper function
+CppToC: 1 header bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/cpp-features/c/include
+  bridged   nasty.hpp  -> NastyApi: 8 structs, 5 enums, 4 typedefs, 11 constant/macros, 33 functions (28 with C++ linkage), 2 not translated
+  safe wrapper: 30 functions, 4 layout probes, includes [nasty.hpp]; 5 with C linkage also declared in the C views (4 file(s) changed)

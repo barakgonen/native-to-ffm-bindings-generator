@@ -1,0 +1,27 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "store.h",
+      "javaClass": "StoreApi",
+      "types": [],
+      "functions": ["safe_store_call"],
+      "constants": {}
+    }
+  ],
+  "structs": [],
+  "enums": [],
+  "probes": [],
+  "functions": [
+    {
+      "safe": "safe_store_call",
+      "provider": "store_call",
+      "decl": "int store_call(int kind)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "kind", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    }
+  ]
+}

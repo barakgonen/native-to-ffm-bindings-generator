@@ -1,0 +1,131 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "inventory.h",
+      "javaClass": "InventoryApi",
+      "types": [],
+      "functions": ["safe_packCrate", "safe_crateState"],
+      "constants": {}
+    },
+    {
+      "file": "pricing/pricing.h",
+      "javaClass": "PricingApi",
+      "types": ["Price"],
+      "functions": ["safe_priceOf"],
+      "constants": {}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Price",
+      "fields": [
+        {"name": "perKg", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double perKg"},
+        {"name": "currency", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char currency[CURRENCY_LEN]"}
+      ]
+    },
+    {
+      "name": "Crate",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "sample", "type": "Camera", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Camera sample"},
+        {"name": "count", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int count"},
+        {"name": "totalWeight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double totalWeight"},
+        {"name": "state", "type": "CrateState", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "CrateState state"}
+      ]
+    },
+    {
+      "name": "Point",
+      "fields": [
+        {"name": "x", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double x"},
+        {"name": "y", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double y"}
+      ]
+    },
+    {
+      "name": "Camera",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "lenses", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int lenses"},
+        {"name": "model", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char model[NAME_LEN]"}
+      ]
+    },
+    {
+      "name": "Lidar",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "health", "type": "Health", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Health health"},
+        {"name": "position", "type": "Point", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Point position"},
+        {"name": "origin", "type": "Point", "ptr": 1, "const": false, "char": false, "fn": false, "decl": "Point *origin"},
+        {"name": "beams", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int beams[MAX_BEAMS]"},
+        {"name": "name", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char name[NAME_LEN]"}
+      ]
+    },
+    {
+      "name": "Radar",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"},
+        {"name": "health", "type": "Health", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Health health"},
+        {"name": "site", "type": "char", "ptr": 0, "const": false, "char": true, "fn": false, "decl": "char site[NAME_LEN]"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "CrateState",
+      "names": ["CrateState"],
+      "constants": [
+        {"name": "EMPTY", "value": 0},
+        {"name": "PARTIAL", "value": 1},
+        {"name": "FULL", "value": 2}
+      ]
+    },
+    {
+      "name": "Health",
+      "names": ["Health"],
+      "constants": [
+        {"name": "GREEN", "value": 0},
+        {"name": "YELLOW", "value": 1},
+        {"name": "RED", "value": 2}
+      ]
+    }
+  ],
+  "probes": ["Price", "Crate", "Point", "Camera", "Lidar", "Radar"],
+  "functions": [
+    {
+      "safe": "safe_packCrate",
+      "provider": "packCrate",
+      "decl": "int packCrate(Crate& crate, const Camera* cameras, int count)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "crate", "type": "Crate", "ptr": 1, "const": false, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "cameras", "type": "Camera", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "count", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_crateState",
+      "provider": "crateState",
+      "decl": "CrateState crateState(const Crate& crate)",
+      "if": null,
+      "result": {"type": "CrateState", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "crate", "type": "Crate", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null}
+      ]
+    },
+    {
+      "safe": "safe_priceOf",
+      "provider": "pricing::priceOf",
+      "decl": "double pricing::priceOf(const Lidar& lidar, Price price)",
+      "if": null,
+      "result": {"type": "double", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "lidar", "type": "Lidar", "ptr": 1, "const": true, "char": false, "fn": false, "ref": true, "byValue": false, "array": null},
+        {"name": "price", "type": "Price", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": true, "array": null}
+      ]
+    }
+  ]
+}

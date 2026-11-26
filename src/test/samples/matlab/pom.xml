@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- A project of its own that uses the plugin, the way any project would (see README.md here) -->
+    <groupId>io.nativeffm.samples</groupId>
+    <artifactId>matlab-bindings</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>25</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.nativeffm</groupId>
+                <artifactId>native-to-ffm-bindings-generator</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- the provider's root folder: include/ (the headers) and lib/ (libsensor.so) -->
+                    <providerDir>${project.basedir}</providerDir>
+                    <!-- not every header: these four, and the entry points of three of them in one class -->
+                    <providerHeaders>
+                        <providerHeader>sensor_types.h</providerHeader>
+                        <providerHeader>sensor.h=SensorApi</providerHeader>
+                        <providerHeader>sensor_initialize.h=SensorApi</providerHeader>
+                        <providerHeader>sensor_terminate.h=SensorApi</providerHeader>
+                    </providerHeaders>
+                    <!-- optional: into the jar too, and next to the libraries at run time: AdditionalFiles.path("sensor.cfg") -->
+                    <additionalFiles>
+                        <additionalFile>config/sensor.cfg</additionalFile>
+                    </additionalFiles>
+                    <!-- everything else is a default: the library (the one lib*.so in lib/), the package
+                         (io.nativeffm.samples.sensor), the module, the safe wrapper (target/safe-wrapper) -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

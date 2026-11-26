@@ -1,0 +1,1 @@
+RecordGen: wrote 5 classes, 2 enums, InventoryApi (2 functions), PricingApi (1 function), SafeWrapper, NativeLibraries (inventory, inventory_safe; INVENTORY_LIBRARY_DIR) to <out>/multi-header-two/java/gen/{api,types,runtime,internal}

@@ -1,0 +1,67 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "e.h",
+      "javaClass": "EApi",
+      "types": ["Paint", "color_e", "Shade", "Toggle"],
+      "functions": ["safe_get_shade"],
+      "constants": {}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Paint",
+      "fields": [
+        {"name": "c", "type": "Color", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Color c"},
+        {"name": "c2", "type": "color_e", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "enum color_e c2"},
+        {"name": "s", "type": "Shade", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Shade s"},
+        {"name": "s2", "type": "shade_e", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "enum shade_e s2"},
+        {"name": "t", "type": "Toggle", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Toggle t"},
+        {"name": "ts", "type": "Toggle", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "Toggle ts[2]"},
+        {"name": "loose", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int loose"}
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "Color",
+      "names": ["Color", "color_e"],
+      "constants": [
+        {"name": "RED", "value": 0},
+        {"name": "GREEN", "value": 5},
+        {"name": "BLUE", "value": 6}
+      ]
+    },
+    {
+      "name": "Shade",
+      "names": ["Shade", "shade_e"],
+      "constants": [
+        {"name": "DARK", "value": 0},
+        {"name": "LIGHT", "value": 1}
+      ]
+    },
+    {
+      "name": "Toggle",
+      "names": ["Toggle"],
+      "constants": [
+        {"name": "ON", "value": 1},
+        {"name": "OFF", "value": 0}
+      ]
+    }
+  ],
+  "probes": ["Paint"],
+  "functions": [
+    {
+      "safe": "safe_get_shade",
+      "provider": "get_shade",
+      "decl": "Shade get_shade(enum color_e c, Toggle t)",
+      "if": null,
+      "result": {"type": "Shade", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "c", "type": "color_e", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null},
+        {"name": "t", "type": "Toggle", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    }
+  ]
+}

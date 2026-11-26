@@ -1,0 +1,1 @@
+RecordGen: wrote 1 classes, 0 enums, AApi (1 function), BApi (1 function), SafeWrapper, NativeLibraries (guard, guard_safe; GUARD_LIBRARY_DIR) to <out>/include-guards/java/gen/{api,types,runtime,internal}

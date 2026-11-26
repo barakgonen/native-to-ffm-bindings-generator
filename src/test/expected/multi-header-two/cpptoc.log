@@ -1,0 +1,8 @@
+CppToC: 2 headers bridged to Java, 3 more converted to C (used by them), 0 included but not needed -> <out>/multi-header-two/c/include
+  bridged   inventory.hpp              -> InventoryApi: 2 functions (2 with C++ linkage)
+  bridged   pricing/pricing.hpp        -> PricingApi: 1 struct, 1 function (1 with C++ linkage)
+  converted device_registry_types.hpp  for Camera, Lidar (used by inventory.hpp, inventory_types.hpp, pricing/pricing.hpp): 4 structs, 1 enum, 9 constant/macros
+  converted inventory_types.hpp        for Crate, CrateState (used by inventory.hpp): 1 struct, 1 enum, 1 constant/macro
+  converted units.hpp                  for CURRENCY_LEN (used by pricing/pricing.hpp): 2 constant/macros
+  (3 other headers in [include] not used)
+  safe wrapper: 3 functions, 6 layout probes, includes [inventory.hpp, pricing/pricing.hpp]; 0 with C linkage also declared in the C views (8 file(s) changed)

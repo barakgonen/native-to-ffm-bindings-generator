@@ -1,0 +1,4 @@
+CppToC: 2 headers bridged to Java, 0 more converted to C (used by them), 0 included but not needed -> <out>/many-fields/c/include
+  bridged   api.h    -> Api: 4 functions (4 with C++ linkage)
+  bridged   types.h  -> Types: 2 structs, 1 enum
+  safe wrapper: 4 functions, 2 layout probes, includes [api.h]; 0 with C linkage also declared in the C views (5 file(s) changed)

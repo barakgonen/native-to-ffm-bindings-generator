@@ -1,0 +1,47 @@
+{
+  "safePrefix": "safe_",
+  "headers": [
+    {
+      "file": "a.h",
+      "javaClass": "AApi",
+      "types": ["Camera"],
+      "functions": ["safe_add_camera", "safe_registry_init"],
+      "constants": {"REGISTRY_CAPACITY": 1000, "REGISTRY_FULL": -1}
+    }
+  ],
+  "structs": [
+    {
+      "name": "Camera",
+      "fields": [
+        {"name": "id", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "int id"},
+        {"name": "weight", "type": "double", "ptr": 0, "const": false, "char": false, "fn": false, "decl": "double weight"}
+      ]
+    }
+  ],
+  "enums": [],
+  "probes": ["Camera"],
+  "functions": [
+    {
+      "safe": "safe_add_camera",
+      "provider": "add_camera",
+      "decl": "int add_camera(const Camera *camera, Camera cameras[REGISTRY_CAPACITY])",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "camera", "type": "Camera", "ptr": 1, "const": true, "char": false, "fn": false, "ref": false, "byValue": false, "array": 1000},
+        {"name": "cameras", "type": "Camera", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": 1000}
+      ]
+    },
+    {
+      "safe": "safe_registry_init",
+      "provider": "registry_init",
+      "decl": "int registry_init(Camera cameras[], int n)",
+      "if": null,
+      "result": {"type": "int", "ptr": 0, "const": false, "char": false, "fn": false},
+      "params": [
+        {"name": "cameras", "type": "Camera", "ptr": 1, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": -1},
+        {"name": "n", "type": "int", "ptr": 0, "const": false, "char": false, "fn": false, "ref": false, "byValue": false, "array": null}
+      ]
+    }
+  ]
+}

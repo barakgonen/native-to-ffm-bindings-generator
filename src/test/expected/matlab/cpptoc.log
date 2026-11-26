@@ -1,0 +1,10 @@
+warning: sensor.h:32: sensorlib::sensor_sort not translated: parameter x template type
+CppToC: 4 headers bridged to Java, 1 more converted to C (used by them), 1 included but not needed -> <out>/matlab/c/include
+  bridged   sensor.h             -> SensorApi: 7 functions (7 with C++ linkage), 1 not translated
+  bridged   sensor_initialize.h  -> SensorApi: 1 function (1 with C++ linkage)
+  bridged   sensor_terminate.h   -> SensorApi: 1 function (1 with C++ linkage)
+  bridged   sensor_types.h       -> SensorTypes: 2 structs, 1 enum
+  converted rtwtypes.h           for boolean_T, char_T, creal_T, int32_T, real_T (used by sensor.h, sensor_types.h): 5 structs, 21 typedefs, 11 constant/macros
+  skipped   coder_array.h        not needed: the bridged headers use nothing it defines
+  (2 other headers in [include] not used)
+  safe wrapper: 8 functions, 7 layout probes, includes [sensor.h, sensor_initialize.h, sensor_terminate.h]; 0 with C linkage also declared in the C views (8 file(s) changed)
